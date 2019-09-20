@@ -1,0 +1,13 @@
+CODE:
+
+Function Post tweet:
+
+msg = {payload: msg.payload['description']}
+
+return msg;
+
+Function extractEmailMessage
+
+msg = {payload: msg.payload['description']}
+
+return msg;
