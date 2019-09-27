@@ -1,0 +1,89 @@
+[
+    {
+        "id": "ca525581.09a878",
+        "type": "tab",
+        "label": "Weather Twitter",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1719d219.b5802e",
+        "type": "inject",
+        "z": "ca525581.09a878",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "6ed618c2.031178"
+            ]
+        ]
+    },
+    {
+        "id": "6ed618c2.031178",
+        "type": "openweathermap",
+        "z": "ca525581.09a878",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Kansas City",
+        "country": "United States",
+        "language": "en",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "26e31266.2895ee"
+            ]
+        ]
+    },
+    {
+        "id": "26e31266.2895ee",
+        "type": "function",
+        "z": "ca525581.09a878",
+        "name": "postTweet",
+        "func": "msg = {payload: msg.payload['description']}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 220,
+        "wires": [
+            [
+                "4f566c27.008264",
+                "c44b9ebd.7e49a"
+            ]
+        ]
+    },
+    {
+        "id": "4f566c27.008264",
+        "type": "debug",
+        "z": "ca525581.09a878",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c44b9ebd.7e49a",
+        "type": "twitter out",
+        "z": "ca525581.09a878",
+        "twitter": "",
+        "name": "Weather",
+        "x": 390,
+        "y": 280,
+        "wires": []
+    }
+]

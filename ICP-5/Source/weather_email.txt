@@ -1,0 +1,94 @@
+[
+    {
+        "id": "27a0b44c.9e37fc",
+        "type": "tab",
+        "label": "Weather Email",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "149d7922.ba0757",
+        "type": "inject",
+        "z": "27a0b44c.9e37fc",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "47cd635d.f7ebac"
+            ]
+        ]
+    },
+    {
+        "id": "47cd635d.f7ebac",
+        "type": "openweathermap",
+        "z": "27a0b44c.9e37fc",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Kansas City",
+        "country": "United States",
+        "language": "en",
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "c461d98c.e65d78"
+            ]
+        ]
+    },
+    {
+        "id": "e19060b3.172c8",
+        "type": "debug",
+        "z": "27a0b44c.9e37fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "25152bec.df1334",
+        "type": "e-mail",
+        "z": "27a0b44c.9e37fc",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "cubon.mikaela@gmail.com",
+        "dname": "",
+        "x": 440,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c461d98c.e65d78",
+        "type": "function",
+        "z": "27a0b44c.9e37fc",
+        "name": "extractEmailMessage",
+        "func": "msg = {payload: msg.payload['description']}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "e19060b3.172c8",
+                "25152bec.df1334"
+            ]
+        ]
+    }
+]
