@@ -17,12 +17,26 @@ word='okay'
 count=0
 index=0
 for i in l:
+    print(str(i))
+    print(sentence[i])
     if i == 0:
-        index = len(word)
-        if sentence[index] != "\n" :
-            character=sentence[index]
-            print(character)
-        index-=1
-        if sentence[index] != "\n" :
-            print(character)
-        
+        index= i + len(word)# a space when it is okay
+        character = sentence[index]
+        if character == ' ':
+            count+=1
+            print("count is: " + str(count))
+    else:
+        index= i -1
+        character = sentence[index]
+        if character == ' ':
+            #count+=1
+            #print("count is: " + str(count))
+
+            index +=1#undo the minus so index=i
+            index+=len(word)
+            character = sentence[index]
+            if character == ' ':
+                count+=1
+                print("count is: " + str(count))
+
+print("final count is: " + str(count))
