@@ -1,4 +1,4 @@
-sentence="okay Jokay okays"
+sentence="okay okay okays"
 search="okay"
 
 def find_all(a_str, sub):
@@ -13,9 +13,14 @@ l =list(find_all(sentence, 'okay')) #list of indecies
 print(*l)
 print(len(l))
 
+
+sentence+="\n"
 word='okay'
 count=0
 index=0
+endindex=sentence.find("\n")
+print("end is at: " + str(endindex))
+
 for i in l:
     print(str(i))
     print(sentence[i])
@@ -34,9 +39,13 @@ for i in l:
 
             index +=1#undo the minus so index=i
             index+=len(word)
-            character = sentence[index]
-            if character == ' ':
+            if index >= endindex:
                 count+=1
                 print("count is: " + str(count))
+            else:
+                character = sentence[index]
+                if character == ' ': 
+                    count+=1
+                    print("count is: " + str(count))
 
 print("final count is: " + str(count))
